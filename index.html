@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Pedidos</title>
+    <script src="corte.js"></script>
+    <script src="tabela.js"></script>
+    <script src="formulario.js"></script>
+
+</head>
+
+<body>
+
+    <form id="form" method="POST">
+        <table border="1" id="tabela">
+            <tr>
+                <td colspan="6" style="text-align: center">
+                    <label>Tábuas para corte</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Tamanho tabua:</td>
+                <td>
+                    <input type="text" name="tamanhoTabua" placeholder="ex: 2m">
+                </td>
+                <td>
+                    <label>Limite de corte:</label>
+                </td>
+                <td>
+                    <input type="text" name="limiteCorte" placeholder="ex: 3cm">
+                </td>
+            </tr>
+            <tr>
+                
+                <td>Tamanho</td>
+                <td>
+                    <input type="text"  name="tamanho0" placeholder="Tamanho">
+                </td>
+                <td>
+                    <label>Quantidade:</label>
+                </td>
+                <td>
+                    <input type="text" name="quantid0" placeholder="Quantidade">
+                </td>
+            
+            </tr>
+
+        </table>
+
+        <button type="button" id="adicionar">Adicionar</button>
+        <button type="button" id="submit">Cadastrar</button>
+
+    </form>
+
+    <script>
+        
+        var index = 1
+        const adicionar = document.getElementById("adicionar");
+        
+        adicionar.addEventListener("click", function (event) {
+            adicionarLinhaTabela(index)
+            index++
+        });
+    
+    </script>
+        
+<script>
+
+const submit = document.getElementById("submit");
+submit.addEventListener("click", function(event){
+    pegaDados()
+})
+    </script>
+</body>
+
+</html>
