@@ -116,7 +116,7 @@ var listaMenor = listaResultado[indexMenor]
 listaFim.push(listaMenor)
 
 listaMenor.listaValores.split(",").forEach((x,i)=>{
-    var index = listaDeValores.indexOf(parseInt(x))
+    var index = listaDeValores.indexOf(parseFloat(x))
     if(index > -1){
         listaDeValores.splice(index,1)
     }
@@ -140,7 +140,7 @@ function ordernarObj(a,b){
 }
 
 function somaArray(array){
-    return array.reduce((acumulador, elemeto) => parseInt( acumulador ) + parseInt( elemeto ), 0)
+    return array.reduce((acumulador, elemeto) => parseFloat( acumulador ) + parseFloat( elemeto ), 0)
 }
 
 }

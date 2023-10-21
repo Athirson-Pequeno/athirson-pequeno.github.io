@@ -39,7 +39,7 @@ const listaFinal = []
 
 listaTamanho.forEach((tamanho, index)=>{
     for(var i = 0; parseInt(listaQuantidade[index]) > i ; i++){
-        listaFinal.push(parseInt(tamanho));
+        listaFinal.push(parseFloat(tamanho));
     }
 })
 
@@ -47,9 +47,12 @@ valorUsuario = tamanhoTabua - limiteCorte
 
 var resultados = calcularPossibilidades(listaFinal, valorUsuario)
 resultados.forEach((resultado, index)=>{
-    document.write((index + 1) +"ª Melhor combinação: " + resultado.listaValores)
+    document.write((index + 1) +"ª Melhor combinação: ")
+    resultado.listaValores.split(",").forEach(item => {
+        document.write(item + " | ")
+    })
     document.write("<br>")
-    document.write("Soma das tabuas " + resultado.soma)
+    document.write("Soma das tabuas " + resultado.soma.toFixed(2))
     document.write("<hr>")
     console.log(resultado)
 })
