@@ -1,12 +1,29 @@
-function adicionarLinhaTabela(index){
-    
+function adicionarLinhaTabela(index) {
+
     var table = document.getElementById("tabela");
-    var row = table.insertRow(-1);
-    
-    row.insertCell(0).innerHTML = "Tamanho";
-    row.insertCell(1).innerHTML = `<input  class="form-control" type="text" name="tamanho${index}" placeholder="Tamanho">`;
-    row.insertCell(2).innerHTML = "Quantidade";
-    row.insertCell(3).innerHTML = `<input  class="form-control" type="text" name="quantid${index}" placeholder="Quantidade">`;
+    table.insertRow(-1).innerHTML = `
+    <th scope="row">${index + 1}</th>
+    <td colspan="2">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" placeholder="Tamanho"
+                aria-describedby="inputGroup-sizing-sm" name="tamanho${index}">
+        </div>
+    </td>
+    <td colspan="2">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control" placeholder="Quantidade"
+                aria-describedby="inputGroup-sizing-sm" name="quantid${index}">
+        </div>
+    </td>
+    <td colspan="1">
+        <input type="image" src="img/lixeira.png" height="20px" onclick="deletarLinha(this)" />
+    </td>`;
+   
     index++
 
+}
+
+function removerLinhaTabela(btn) {
+    var row = btn.parentNode.parentNode;
+    row.parentNode.removeChild(row);
 }

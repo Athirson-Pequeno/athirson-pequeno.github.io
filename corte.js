@@ -1,8 +1,6 @@
 
 
 function calcularPossibilidades(listaDeItens, valor){
-//var lista3 = [11, 22, 33, 44, 55, 66, 77, 88, 76, 65, 43, 32, 21, 10, 19, 29, 39, 49, 59, 69, 79,21, 20, 20, 20, 15,21, 20, 20, 20, 15,21, 20, 20, 20, 15]
-var lista3 = [50, 50, 50, 50, 50, 50, 35, 15, 15, 15, 10, 10, 10, 7, 7, 7, 5, 5,5,5,5]
 
 var listaDeValores = listaDeItens
 var listaDeCombinacoes = []
@@ -12,8 +10,7 @@ var listaDeSoma = []
 var valorUsuario = valor
 
 function combinacoes(conjunto, index){
-    
-    
+
     var tamanhoConjunto = index;
 
     function listaDeIndices(conjunto, indices){
