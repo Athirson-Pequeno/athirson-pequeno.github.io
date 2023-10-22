@@ -1,3 +1,4 @@
+
 function pegaDados() {
 
     const formData = new FormData(document.getElementById("form"));
@@ -5,7 +6,7 @@ function pegaDados() {
 
     const transformation = Object.entries(obj).map(([key, value]) => ({ index: key === "tamanhoTabua" || key === "limiteCorte" ? -1 : parseInt(key.slice(7)), [key === "tamanhoTabua" ? "tamanhoTabua" : key === "limiteCorte" ? "limiteCorte" : key.slice(0, 7)]: value }));
 
-    console.log(transformation)
+    
 
     const listaTamanho = []
     const listaQuantidade = []
@@ -30,10 +31,6 @@ function pegaDados() {
         }
     })
 
-    transformation.forEach(x => {
-        console.log(x.index)
-
-    })
 
     const listaFinal = []
 
@@ -60,20 +57,33 @@ function pegaDados() {
     resultados.forEach((resultado, index) => {
         const novaDiv = document.createElement("div")
         novaDiv.id = "novaDiv"
-        novaDiv.className = "border border-success m-3 p-2"
+        novaDiv.className = "border border-success mb-3 p-2"
 
-        const texto = "Com " +  resultado.soma + "cm a " + (index + 1) + "ª melhor combinação é: "
+
+        const texto = `${index + 1}ª tábua, ${resultado.soma}cm usados, cortar da seguinte forma`
 
         const textoDivDes = document.createElement("span")
         textoDivDes.innerHTML = texto
         novaDiv.appendChild(textoDivDes)
-     
-        resultado.listaValores.split(",").forEach(item => {
+        novaDiv.appendChild(document.createElement("br"))
+        
+        const listaDeValores =  resultado.listaValores.split(",")
+        
+        const resultadoFinal = []
+
+        listaDeValores.forEach(item => {
+            const texto = `${listaDeValores.filter(x=>x === item).length} tábuas de ${item}cm`
+            if(!resultadoFinal.includes(texto)){
+                resultadoFinal.push(texto)
+            }
+        })
+
+        resultadoFinal.forEach(item => {
             const textoDiv = document.createElement("span")
             textoDiv.innerHTML = item
-            textoDiv.className = "span-resultado"
-            textoDiv.style
+            textoDiv.className = "span-resultado mt-3"
             novaDiv.appendChild(textoDiv)
+            novaDiv.appendChild(document.createElement("br"))
         })
 
 
@@ -86,3 +96,18 @@ function pegaDados() {
 
 
 }
+
+/*function contarValores(lista, valor) {
+    const countMap = Object.create(null);
+  
+    for (const element of lista) {
+      // Basicamente, estamos dizendo: atribua à `countMap[element]` o valor
+      // atual (ou zero, caso não existir) somado ao número 1.
+      countMap[element] = (countMap[element] || 0) + 1;
+    }
+  
+    return Object.entries(countMap).map(([value, count]) => ({
+      numero: value,
+      quantidade: count
+    }));
+  }*/

@@ -1,17 +1,20 @@
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pedidos</title>
     <script src="corte.js"></script>
     <script src="tabela.js"></script>
     <script src="formulario.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <style>
         td {
-            
+
             text-align: center;
-            vertical-align: middle;;
+            vertical-align: middle;
+            ;
         }
 
         tr {
@@ -20,6 +23,9 @@
             vertical-align: middle;
         }
 
+        br{
+            margin-top: 5px;
+        }
         .table-responsive {
             width: 100% !important;
         }
@@ -31,13 +37,17 @@
         }
 
         .span-resultado {
-            background: rgba(255, 20, 20, 0.651);
-            padding: 3;
-            margin: 2;
-            border-radius: 10%;
+            background: rgba(168, 168, 168, 0.651);
+            padding: 3px;
+            border-radius: 3px;
+            display:inline-block;
+            margin-top: 2px;
         }
-        
 
+        .resultados-div {
+            width: 98% !important;
+            margin: auto;
+        }
     </style>
 </head>
 
@@ -47,47 +57,56 @@
         <div class="container">
             <div class="table-responsive">
                 <div class="tableDiv mt-3">
-                    <table id="tabela" class="table table-hover" >
+                    <table id="tabela" class="table table-hover">
                         <thead>
-                        <th colspan="8" style="text-align: center">
+                            <th colspan="8" style="text-align: center">
 
-                            <div style="padding: 15 ; background-color: rgb(224, 224, 224);">
-                                <label>Tábuas para corte</label>
-                            </div>
+                                <div style="padding: 15 ; background-color: rgb(224, 224, 224);">
+                                    <label>Tábuas para corte</label>
+                                </div>
 
-                        </th>
-                        <tr>
-                            <td colspan="3" >
-                                <div class="input-group input-group-sm" >
-                                    
-                                    <input type="text" class="form-control justify-content-center align-items-center" placeholder="Tamanho tabua"
-                                        aria-describedby="inputGroup-sizing-sm" name="tamanhoTabua">
-                                </div>
-                            </td>
-                            <td colspan="3">
-                                <div class="input-group input-group-sm">
-                                    <input type="text" class="form-control" placeholder="Limite de corte"
-                                        aria-describedby="inputGroup-sizing-sm" name="limiteCorte">
-                                </div>
-                            </td>
-                        </tr>
+                            </th>
+                            <tr>
+                                
+                                <td colspan="3">
+                                    <div class="input-group input-group-sm">
+
+                                        <input 
+                                            id="tamanhoTabua"
+                                            type="text"
+                                            class="form-control justify-content-center align-items-center"
+                                            placeholder="Tamanho tabua" aria-describedby="inputGroup-sizing-sm"
+                                            name="tamanhoTabua">
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div class="input-group input-group-sm">
+                                        <input 
+                                            id="limiteCorte"
+                                            type="text" class="form-control" placeholder="Limite de corte"
+                                            aria-describedby="inputGroup-sizing-sm" name="limiteCorte" >
+                                    </div>
+                                </td>
+                                <td>
+                                   
+                                </td>
+                            </tr>
                         </thead>
                         <tr>
-                            <th colspan="1" >#</th>
-                            <th colspan="2" scope="col">Tamanho</th>
-                            <th colspan="3" scope="col">Quantidade</th>
-                            
+        
+                            <th colspan="3" scope="col">Tamanho</th>
+                            <th colspan="4" scope="col">Quantidade</th>
+
                         </tr>
 
                         <tr>
-                            <th scope="row">1</th>
-                            <td colspan="2">
+                            <td colspan="3">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control" placeholder="Tamanho"
                                         aria-describedby="inputGroup-sizing-sm" name="tamanho0">
                                 </div>
                             </td>
-                            <td colspan="2">
+                            <td colspan="3">
                                 <div class="input-group input-group-sm">
                                     <input type="text" class="form-control" placeholder="Quantidade"
                                         aria-describedby="inputGroup-sizing-sm" name="quantid0">
@@ -108,11 +127,14 @@
         </div>
     </form>
 
-<div id="divResultados">
+    <div class="container">
+        <div class="table-responsive">
+            <div id="divResultados" class="resultados-div">
 
-    <div id="novasDiv"></div>
-</div>
-
+                <div id="novasDiv"></div>
+            </div>
+        </div>
+    </div>
     <script>
 
         var index = 1
@@ -131,7 +153,10 @@
         function deletarLinha(btn) {
             removerLinhaTabela(btn)
         }
+
+        
     </script>
 </body>
 
 </html>
+
