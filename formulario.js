@@ -92,8 +92,6 @@ function pegaDados(diferenca) {
         const divResultado = document.getElementById("novasDiv")
         divResultado.insertBefore(novaDiv, null)
 
-
-
     })
 
 
