@@ -4,13 +4,13 @@ function adicionarLinhaTabela(index) {
     table.insertRow(-1).innerHTML = `
     <td colspan="3">
         <div class="input-group input-group-sm">
-            <input type="text" class="form-control" placeholder="Tamanho"
+            <input type="number" class="form-control" placeholder="Tamanho"
                 aria-describedby="inputGroup-sizing-sm" name="tamanho${index}">
         </div>
     </td>
     <td colspan="3">
         <div class="input-group input-group-sm">
-            <input type="text" class="form-control" placeholder="Quantidade"
+            <input type="number" class="form-control" placeholder="Quantidade"
                 aria-describedby="inputGroup-sizing-sm" name="quantid${index}">
         </div>
     </td>
