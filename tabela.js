@@ -15,7 +15,10 @@ function adicionarLinhaTabela(index) {
         </div>
     </td>
     <td colspan="1">
-        <input type="image" src="img/lixeira.png" height="20px" onclick="deletarLinha(this)" tabindex="-1" />
+    <button onclick="deletarLinha(this)" tabindex="-1"
+        style="background: transparent; border: 0px;">
+            <input type="image" tabindex="-1" src="img/lixeira.png" height="20px" />
+    </button>
     </td>`;
 
 }
