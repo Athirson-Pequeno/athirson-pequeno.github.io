@@ -46,6 +46,14 @@
             margin-top: 2px;
         }
 
+        .span-resultado-sobra {
+            background: rgba(81, 179, 94, 0.651);
+            padding: 3px;
+            border-radius: 3px;
+            display: inline-block;
+            margin-top: 2px;
+        }
+
         .resultados-div {
             width: 98% !important;
             margin: auto;
@@ -55,7 +63,7 @@
 
 <body>
 
-    <form id="form" method="POST">
+    <form id="form" method="dialog">
         <div class="container">
             <div class="table-responsive">
                 <div class="tableDiv mt-3">
@@ -76,14 +84,14 @@
                                         <input id="tamanhoTabua" type="number"
                                             class="form-control justify-content-center align-items-center"
                                             placeholder="Tamanho tábua" aria-describedby="inputGroup-sizing-sm"
-                                            name="tamanhoTabua">
+                                            name="tamanhoTabua" required step=any>
                                     </div>
                                 </td>
                                 <td colspan="3">
                                     <div class="input-group input-group-sm">
                                         <input id="limiteCorte" type="number" class="form-control"
                                             placeholder="Limite de corte" aria-describedby="inputGroup-sizing-sm"
-                                            name="limiteCorte">
+                                            name="limiteCorte" required step=any>
                                     </div>
                                 </td>
                                 <td>
@@ -105,13 +113,13 @@
                             <td colspan="3">
                                 <div class="input-group input-group-sm">
                                     <input type="number" class="form-control" placeholder="Tamanho"
-                                        aria-describedby="inputGroup-sizing-sm" name="tamanho0">
+                                        aria-describedby="inputGroup-sizing-sm" name="tamanho0" required  step=any>
                                 </div>
                             </td>
                             <td colspan="3">
                                 <div class="input-group input-group-sm">
                                     <input type="number" class="form-control" placeholder="Quantidade"
-                                        aria-describedby="inputGroup-sizing-sm" name="quantid0">
+                                        aria-describedby="inputGroup-sizing-sm" name="quantid0" required  step=any>
                                 </div>
                             </td>
                             <td colspan="1">
@@ -125,7 +133,7 @@
                     </table>
                     <div class="mb-3 p-3 d-flex justify-content-between">
                         <button type="button" class="btn btn-primary" id="adicionar">Adicionar</button>
-                        <button type="button" class="btn btn-success" id="submit">Calcular</button>
+                        <button type="submit" class="btn btn-success" id="submit">Calcular</button>
                     </div>
                 </div>
             </div>
@@ -144,6 +152,7 @@
         jQuery(document.body).on('keypress', function (e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
+                $("#submit").trigger("click");
             }
         });
 
@@ -157,7 +166,11 @@
 
         const submit = document.getElementById("submit");
         submit.addEventListener("click", function (event) {
-            pegaDados()
+            const tamanhoTabuaValor = document.getElementById("tamanhoTabua").value
+            const limiteCorteValor = document.getElementById("limiteCorte").value
+
+            const diferenca = tamanhoTabuaValor - limiteCorteValor
+            pegaDados(diferenca)
         })
 
         function deletarLinha(btn) {

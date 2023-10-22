@@ -1,5 +1,5 @@
 
-function pegaDados() {
+function pegaDados(diferenca) {
 
     const formData = new FormData(document.getElementById("form"));
     const obj = Object.fromEntries(formData)
@@ -82,6 +82,11 @@ function pegaDados() {
             novaDiv.appendChild(textoDiv)
             novaDiv.appendChild(document.createElement("br"))
         })
+
+        const sobraDeMaterial = document.createElement("span")
+        sobraDeMaterial.innerHTML = `Irá sobrar ${diferenca - resultado.soma}cm`
+        sobraDeMaterial.className = "span-resultado-sobra mt-3"
+        novaDiv.appendChild(sobraDeMaterial)
 
 
         const divResultado = document.getElementById("novasDiv")
