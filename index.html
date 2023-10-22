@@ -23,9 +23,10 @@
             vertical-align: middle;
         }
 
-        br{
+        br {
             margin-top: 5px;
         }
+
         .table-responsive {
             width: 100% !important;
         }
@@ -40,7 +41,7 @@
             background: rgba(168, 168, 168, 0.651);
             padding: 3px;
             border-radius: 3px;
-            display:inline-block;
+            display: inline-block;
             margin-top: 2px;
         }
 
@@ -67,13 +68,11 @@
 
                             </th>
                             <tr>
-                                
+
                                 <td colspan="3">
                                     <div class="input-group input-group-sm">
 
-                                        <input 
-                                            id="tamanhoTabua"
-                                            type="number"
+                                        <input id="tamanhoTabua" type="number"
                                             class="form-control justify-content-center align-items-center"
                                             placeholder="Tamanho tabua" aria-describedby="inputGroup-sizing-sm"
                                             name="tamanhoTabua">
@@ -81,19 +80,18 @@
                                 </td>
                                 <td colspan="3">
                                     <div class="input-group input-group-sm">
-                                        <input 
-                                            id="limiteCorte"
-                                            type="number" class="form-control" placeholder="Limite de corte"
-                                            aria-describedby="inputGroup-sizing-sm" name="limiteCorte" >
+                                        <input id="limiteCorte" type="number" class="form-control"
+                                            placeholder="Limite de corte" aria-describedby="inputGroup-sizing-sm"
+                                            name="limiteCorte">
                                     </div>
                                 </td>
                                 <td>
-                                   
+
                                 </td>
                             </tr>
                         </thead>
                         <tr>
-        
+
                             <th colspan="3" scope="col">Tamanho</th>
                             <th colspan="4" scope="col">Quantidade</th>
 
@@ -113,7 +111,7 @@
                                 </div>
                             </td>
                             <td colspan="1">
-                                <input type="image" src="img/lixeira.png" height="20px" onclick="deletarLinha(this)" />
+                                <input type="image" src="img/lixeira.png" height="20px" onclick="deletarLinha(this)" tabindex="-1" />
                             </td>
                         </tr>
 
@@ -154,9 +152,8 @@
             removerLinhaTabela(btn)
         }
 
-        
+
     </script>
 </body>
 
 </html>
-

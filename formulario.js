@@ -6,8 +6,6 @@ function pegaDados() {
 
     const transformation = Object.entries(obj).map(([key, value]) => ({ index: key === "tamanhoTabua" || key === "limiteCorte" ? -1 : parseInt(key.slice(7)), [key === "tamanhoTabua" ? "tamanhoTabua" : key === "limiteCorte" ? "limiteCorte" : key.slice(0, 7)]: value }));
 
-    
-
     const listaTamanho = []
     const listaQuantidade = []
     var tamanhoTabua = 0
@@ -31,7 +29,6 @@ function pegaDados() {
         }
     })
 
-
     const listaFinal = []
 
     listaTamanho.forEach((tamanho, index) => {
@@ -52,7 +49,7 @@ function pegaDados() {
     novosResultados.id = "novasDiv"
 
     divResultado.insertBefore(novosResultados, null)
-    
+
 
     resultados.forEach((resultado, index) => {
         const novaDiv = document.createElement("div")
@@ -66,14 +63,14 @@ function pegaDados() {
         textoDivDes.innerHTML = texto
         novaDiv.appendChild(textoDivDes)
         novaDiv.appendChild(document.createElement("br"))
-        
-        const listaDeValores =  resultado.listaValores.split(",")
-        
+
+        const listaDeValores = resultado.listaValores.split(",")
+
         const resultadoFinal = []
 
         listaDeValores.forEach(item => {
-            const texto = `${listaDeValores.filter(x=>x === item).length} tábuas de ${item}cm`
-            if(!resultadoFinal.includes(texto)){
+            const texto = `${listaDeValores.filter(x => x === item).length} tábuas de ${item}cm`
+            if (!resultadoFinal.includes(texto)) {
                 resultadoFinal.push(texto)
             }
         })
@@ -89,25 +86,10 @@ function pegaDados() {
 
         const divResultado = document.getElementById("novasDiv")
         divResultado.insertBefore(novaDiv, null)
-        
-        
+
+
 
     })
 
 
 }
-
-/*function contarValores(lista, valor) {
-    const countMap = Object.create(null);
-  
-    for (const element of lista) {
-      // Basicamente, estamos dizendo: atribua à `countMap[element]` o valor
-      // atual (ou zero, caso não existir) somado ao número 1.
-      countMap[element] = (countMap[element] || 0) + 1;
-    }
-  
-    return Object.entries(countMap).map(([value, count]) => ({
-      numero: value,
-      quantidade: count
-    }));
-  }*/
