@@ -1,14 +1,15 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedidos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="Content-Type"  charset="utf-8">
+    <title>Corte de Tábuas</title>
     <script src="corte.js"></script>
     <script src="tabela.js"></script>
     <script src="formulario.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="shortcut icon" type="imagex/png" href="img/icon-estofados.ico">
 
     <style>
         td {
@@ -34,8 +35,10 @@
 
         .tableDiv {
             border: 1px solid rgba(143, 139, 139, 0.733);
+            border-radius: 8px;
             width: 98% !important;
             margin: auto;
+            padding: 2px;
         }
 
         .span-resultado {
@@ -58,10 +61,24 @@
             width: 98% !important;
             margin: auto;
         }
+
+        .logo-container {
+            background-color: black;
+            color: #FFF;
+        }
+
+        .nova-div {
+            border: 1px solid rgba(143, 139, 139, 0.733);
+            border-radius: 8px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="logo-container p-3 d-flex justify-content-between">
+        <img src="img/logo.jpg" height="40px">
+    </div>
+
 
     <form id="form" method="dialog">
         <div class="container">
@@ -69,10 +86,10 @@
                 <div class="tableDiv mt-3">
                     <table id="tabela" class="table">
                         <thead>
-                            <th colspan="8" style="text-align: center">
+                            <th colspan="8" style="text-align: center; border-radius: 8px;">
 
-                                <div style="padding: 15 ; background-color: rgb(224, 224, 224);">
-                                    <label>Tábuas para corte</label>
+                                <div style="padding: 15 ; background-color: #313131; border-radius: 8px;">
+                                    <label style="color: whitesmoke;">Tábuas para corte</label>
                                 </div>
 
                             </th>

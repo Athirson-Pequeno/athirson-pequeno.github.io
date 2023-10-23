@@ -54,7 +54,7 @@ function pegaDados(diferenca) {
     resultados.forEach((resultado, index) => {
         const novaDiv = document.createElement("div")
         novaDiv.id = "novaDiv"
-        novaDiv.className = "border border-success mb-3 p-2"
+        novaDiv.className = "nova-div mb-3 p-2"
 
 
         const texto = `${index + 1}ª tábua, ${resultado.soma}cm usados, cortar da seguinte forma`

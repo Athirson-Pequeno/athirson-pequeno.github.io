@@ -2,7 +2,7 @@
 
 function calcularPossibilidades(listaDeItens, valor){
 
-var listaDeValores = listaDeItens
+var listaDeValores = listaDeItens.sort(ordernarInverso)
 var listaDeCombinacoes = []
 var listaResultado = []
 var listaFim = []
@@ -62,10 +62,20 @@ function combinacoes(conjunto, index){
 }
 
 
-var sdsd = 0
 
 for (var iFor = 0; listaDeValores.length !== 0; iFor++){
-    for (var i = 0; i <= listaDeValores.length; i++){
+
+    var somaValores = 0
+    var tamanhoLista = 0
+    listaDeValores.forEach(item =>{
+        somaValores += item
+        if(somaValores <= valorUsuario){
+            tamanhoLista++
+        }
+    })
+
+
+    for (var i = 0; i <= tamanhoLista; i++){
        var lista =  combinacoes(listaDeValores, i)
        lista.forEach(item => {
         if(item !== undefined){
@@ -130,6 +140,10 @@ return listaFim
 
 function ordernar(a,b){
     return b - a
+}
+
+function ordernarInverso(a,b){
+    return a - b
 }
 
 function ordernarObj(a,b){
