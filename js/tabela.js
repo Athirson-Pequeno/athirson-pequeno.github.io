@@ -23,7 +23,9 @@ function adicionarLinhaTabela(index) {
 
 }
 
+
 function removerLinhaTabela(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
+

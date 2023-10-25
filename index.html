@@ -8,68 +8,8 @@
     <script src="js/formulario.js"></script>
     <script src="js/jquery.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css" media="screen" />
     <link rel="shortcut icon" type="imagex/png" href="img/icon-estofados.ico">
-
-    <style>
-        td {
-
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        tr {
-            background-color: rgb(198, 204, 204);
-            border-radius: 5px;
-            vertical-align: middle;
-        }
-
-        br {
-            margin-top: 5px;
-        }
-
-        .table-responsive {
-            width: 100% !important;
-        }
-
-        .tableDiv {
-            border: 1px solid rgba(143, 139, 139, 0.733);
-            border-radius: 8px;
-            width: 98% !important;
-            margin: auto;
-            padding: 2px;
-        }
-
-        .span-resultado {
-            background: rgba(168, 168, 168, 0.651);
-            padding: 3px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-top: 2px;
-        }
-
-        .span-resultado-sobra {
-            background: rgba(81, 179, 94, 0.651);
-            padding: 3px;
-            border-radius: 3px;
-            display: inline-block;
-            margin-top: 2px;
-        }
-
-        .resultados-div {
-            width: 98% !important;
-            margin: auto;
-        }
-
-        .logo-container {
-            background-color: black;
-            color: #FFF;
-        }
-
-        .nova-div {
-            border: 1px solid rgba(143, 139, 139, 0.733);
-            border-radius: 8px;
-        }
-    </style>
 </head>
 
 <body>
@@ -144,7 +84,8 @@
 
                     </table>
                     <div class="mb-3 p-3 d-flex justify-content-between">
-                        <button type="button" class="btn btn-primary" id="adicionar">Adicionar</button>
+                        <button type="button" class="btn btn-primary" id="adicionar"
+                            onclick="adicionarLinha()">Adicionar</button>
                         <button type="submit" class="btn btn-success" id="submit" onclick="enviar()">Calcular</button>
                     </div>
                 </div>
@@ -168,30 +109,6 @@
                 $("#submit").trigger("click");
             }
         });
-
-        var index = 1
-        const adicionar = document.getElementById("adicionar");
-
-        adicionar.addEventListener("click", function (event) {
-            adicionarLinhaTabela(index)
-            index++
-        })
-
-
-        function enviar() {
-            const submit = document.getElementById("form");
-            submit.addEventListener("submit", function (event) {
-                const tamanhoTabuaValor = document.getElementById("tamanhoTabua").value
-                const limiteCorteValor = document.getElementById("limiteCorte").value
-
-                const diferenca = tamanhoTabuaValor - limiteCorteValor
-                pegaDados(diferenca)
-            })
-        }
-        function deletarLinha(btn) {
-            removerLinhaTabela(btn)
-        }
-
 
     </script>
 </body>

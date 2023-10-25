@@ -96,3 +96,25 @@ function pegaDados(diferenca) {
 
 
 }
+
+var index = 1
+
+function adicionarLinha() {
+    
+    adicionarLinhaTabela(index)
+    index++
+}
+
+function enviar() {
+    const form = document.getElementById("form");
+    form.addEventListener("submit", function (event) {
+        const tamanhoTabuaValor = document.getElementById("tamanhoTabua").value
+        const limiteCorteValor = document.getElementById("limiteCorte").value
+
+        const diferenca = tamanhoTabuaValor - limiteCorteValor
+        pegaDados(diferenca)
+    })
+}
+function deletarLinha(btn) {
+    removerLinhaTabela(btn)
+}
