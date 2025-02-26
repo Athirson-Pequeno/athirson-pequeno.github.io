@@ -64,7 +64,7 @@ function pegaDados(diferenca) {
         novaDiv.appendChild(textoDivDes)
         novaDiv.appendChild(document.createElement("br"))
 
-        const listaDeValores = resultado.listaValores.split(",")
+        const listaDeValores = resultado.listaValores
 
         const resultadoFinal = []
 
