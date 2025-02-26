@@ -1,157 +1,74 @@
+function calcularPossibilidades(listaDeItens, valor) {
+    // Ordena os itens em ordem decrescente para otimizar a seleção
+    const itensOrdenados = [...listaDeItens].sort((a, b) => b - a);
+    let remaining = [...itensOrdenados];
+    const resultado = [];
 
+    while (remaining.length > 0) {
+        let melhorSoma = 0;
+        let menorQtdItens = Infinity;
+        let melhorMascara = 0;
 
-function calcularPossibilidades(listaDeItens, valor){
+        // Inicializa a tabela de PD: { [soma]: { count: qtdItens, mask: bitmask } }
+        const dp = { 0: { count: 0, mask: 0 } };
 
-var listaDeValores = listaDeItens.sort(ordernarInverso)
-var listaDeCombinacoes = []
-var listaResultado = []
-var listaFim = []
-var listaDeSoma = []
-var valorUsuario = valor
+        for (let i = 0; i < remaining.length; i++) {
+            const item = remaining[i];
+            const novosEstados = {};
 
-function combinacoes(conjunto, index){
+            for (const [somaStr, estado] of Object.entries(dp)) {
+                const soma = parseInt(somaStr);
+                const novaSoma = soma + item;
+                const novoCount = estado.count + 1;
+                const novaMascara = estado.mask | (1 << i);
 
-    var tamanhoConjunto = index;
+                // Ignora combinações que excedem o valor
+                if (novaSoma > valor) continue;
 
-    function listaDeIndices(conjunto, indices){
-        var valores = [];
-        for (var i of indices){
-            valores.push(conjunto[i])
-        }
-        
-        if((!listaDeCombinacoes.includes(valores.sort(ordernar).toString()))){
-            listaDeCombinacoes.push(valores.sort(ordernar).toString())
+                // Atualiza o estado se for melhor que o existente
+                if (!dp[novaSoma] || novoCount < dp[novaSoma].count) {
+                    if (!novosEstados[novaSoma] || novoCount < novosEstados[novaSoma].count) {
+                        novosEstados[novaSoma] = { count: novoCount, mask: novaMascara };
+                    }
+                }
+            }
 
-            return valores;
-        }
-        
-    }
+            // Mescla os novos estados com a tabela DP, mantendo os ótimos
+            Object.assign(dp, novosEstados);
 
-    if(tamanhoConjunto > conjunto.length){
-        return [];
-    }
-
-    var resultado = []
-    var indices = [...Array(tamanhoConjunto).keys()]
-
-    resultado.push(listaDeIndices(conjunto, indices))
-
-    while(true){
-        var achou = false
-        for(var i = tamanhoConjunto - 1;i >= 0 ; i--){
-            if(indices[i] != i + conjunto.length - tamanhoConjunto){
-                achou = true
-                indices[i]++
-                
-            break
+            // Atualiza a melhor solução encontrada
+            for (const [somaStr, estado] of Object.entries(novosEstados)) {
+                const soma = parseInt(somaStr);
+                if (soma > melhorSoma || (soma === melhorSoma && estado.count < menorQtdItens)) {
+                    melhorSoma = soma;
+                    menorQtdItens = estado.count;
+                    melhorMascara = estado.mask;
+                }
             }
         }
-        if(!achou){
-            break
+
+        // Caso nenhum subconjunto válido seja encontrado (itens maiores que o valor)
+        if (melhorSoma === 0 && remaining.length > 0) {
+            const maiorItem = remaining[0];
+            resultado.push({ soma: maiorItem, listaValores: [maiorItem] });
+            remaining = remaining.slice(1);
+            continue;
         }
-        for(var j = i + 1; j < tamanhoConjunto; j++){
-            indices[j] = indices[j - 1] + 1
+
+        // Extrai os itens selecionados da máscara de bits
+        const selecionados = [];
+        const novosRemaining = [];
+        for (let i = 0; i < remaining.length; i++) {
+            if (melhorMascara & (1 << i)) {
+                selecionados.push(remaining[i]);
+            } else {
+                novosRemaining.push(remaining[i]);
+            }
         }
 
-        resultado.push(listaDeIndices(conjunto, indices))
+        resultado.push({ soma: melhorSoma, listaValores: selecionados });
+        remaining = novosRemaining;
     }
-    
 
-    return resultado
-    
-}
-
-
-
-for (var iFor = 0; listaDeValores.length !== 0; iFor++){
-
-    var somaValores = 0
-    var tamanhoLista = 0
-    listaDeValores.forEach(item =>{
-        somaValores += item
-        if(somaValores <= valorUsuario){
-            tamanhoLista++
-        }
-    })
-
-
-    for (var i = 0; i <= tamanhoLista; i++){
-       var lista =  combinacoes(listaDeValores, i)
-       lista.forEach(item => {
-        if(item !== undefined){
-        var somaItens = somaArray(item)
-        listaDeSoma.push(somaItens)
-        if(somaItens === valorUsuario){
-            i++
-        }}
-    })
-    
-}
-
-
-var maisProximo = listaDeSoma.reduce(function(anterior, corrente) {
-
-    return (Math.abs(corrente - valorUsuario) < Math.abs(anterior - valorUsuario) && corrente <= valorUsuario ? corrente : anterior);
-
-  });  
-
-
-listaDeCombinacoes.forEach(x =>{
-    var soma = somaArray(x.split(","))
-    if(soma <= maisProximo){
-        listaResultado.push({
-            "soma" : soma,
-            "listaValores" : x
-        })
-    }
-})
-
-
-
-var menor =  listaDeValores.length + 1;
-var indexMenor = 0;
-listaResultado.sort(ordernarObj).forEach((x,i) =>{
-    if(x.soma === maisProximo){
-        if(x.listaValores.split(",").length < menor){
-            menor = x.listaValores.split(",").length;
-            indexMenor = listaResultado.indexOf(x)
-        }
-    }
-})
-
-var listaMenor = listaResultado[indexMenor]
-listaFim.push(listaMenor)
-
-listaMenor.listaValores.split(",").forEach((x,i)=>{
-    var index = listaDeValores.indexOf(parseFloat(x))
-    if(index > -1){
-        listaDeValores.splice(index,1)
-    }
-})
-
-
- listaDeCombinacoes = []
- listaMenor = []
- listaDeSoma = []
- listaResultado = []
-}
-
-return listaFim
-
-function ordernar(a,b){
-    return b - a
-}
-
-function ordernarInverso(a,b){
-    return a - b
-}
-
-function ordernarObj(a,b){
-    return a.soma - b.soma
-}
-
-function somaArray(array){
-    return array.reduce((acumulador, elemeto) => parseFloat( acumulador ) + parseFloat( elemeto ), 0)
-}
-
+    return resultado;
 }
