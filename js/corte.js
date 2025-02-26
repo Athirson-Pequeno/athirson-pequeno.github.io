@@ -1,5 +1,4 @@
 function calcularPossibilidades(listaDeItens, valor) {
-    // Ordena os itens em ordem decrescente para otimizar a seleção
     const itensOrdenados = [...listaDeItens].sort((a, b) => b - a);
     let remaining = [...itensOrdenados];
     const resultado = [];
@@ -9,7 +8,6 @@ function calcularPossibilidades(listaDeItens, valor) {
         let menorQtdItens = Infinity;
         let melhorMascara = 0;
 
-        // Inicializa a tabela de PD: { [soma]: { count: qtdItens, mask: bitmask } }
         const dp = { 0: { count: 0, mask: 0 } };
 
         for (let i = 0; i < remaining.length; i++) {
